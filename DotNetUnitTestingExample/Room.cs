@@ -9,7 +9,7 @@ namespace DotNetUnitTestingExample
     /// <summary>
     /// A Room in the hotel.
     /// </summary>
-    class Room
+    public class Room
     {
         public int ID { get; }
         private bool Taken;

@@ -10,7 +10,7 @@ namespace DotNetUnitTestingExample
     /// Reception of the hotel. The Reception class is responsible
     /// for managing the rooms of the hotel.
     /// </summary>
-    class Reception
+    public class Reception
     {
         private readonly List<Room> Rooms;
         
@@ -78,6 +78,38 @@ namespace DotNetUnitTestingExample
         {
             Room room = FindRoom(roomId);
             return room.Unbook();
+        }
+
+        /// <summary>
+        /// Get the list of rooms (by ID) managed by this reception.
+        /// </summary>
+        /// <returns>A list of room IDs</returns>
+        public List<int> GetRooms()
+        {
+            List<int> roomIds = new List<int>();
+            foreach (Room room in Rooms)
+            {
+                roomIds.Add(room.ID);
+            }
+
+            return roomIds;
+        }
+
+        /// <summary>
+        /// Get the list of available rooms (by ID).
+        /// </summary>
+        /// <returns>The list of available rooms by ID</returns>
+        public List<int> GetFreeRooms()
+        {
+            List<int> freeRooms = new List<int>();
+            foreach (Room room in Rooms)
+            {
+                if (!room.IsTaken())
+                {
+                    freeRooms.Add(room.ID);
+                }
+            }
+            return freeRooms;
         }
 
 
